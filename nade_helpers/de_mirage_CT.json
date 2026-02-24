@@ -1,0 +1,41 @@
+{
+  "name": "Mirage - CT Side Starter Pack",
+  "map": "de_mirage",
+  "side": "CT",
+  "lineups": [
+    {
+      "id": "mirage_ct_stairs_smoke",
+      "name": "Stairs Smoke",
+      "description": "Fill stand/aim/dest coordinates",
+      "type": "smoke",
+      "throw": "jump",
+      "side": "CT",
+      "stand_x": 0,
+      "stand_y": 0,
+      "stand_z": 0,
+      "aim_pitch": 0,
+      "aim_yaw": 0,
+      "dest_x": 0,
+      "dest_y": 0,
+      "dest_z": 0,
+      "difficulty": 3
+    },
+    {
+      "id": "mirage_ct_jungle_smoke",
+      "name": "Jungle Smoke",
+      "description": "Fill stand/aim/dest coordinates",
+      "type": "smoke",
+      "throw": "jump",
+      "side": "CT",
+      "stand_x": 0,
+      "stand_y": 0,
+      "stand_z": 0,
+      "aim_pitch": 0,
+      "aim_yaw": 0,
+      "dest_x": 0,
+      "dest_y": 0,
+      "dest_z": 0,
+      "difficulty": 3
+    }
+  ]
+}
