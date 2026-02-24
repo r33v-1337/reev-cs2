@@ -1,16 +1,15 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "REPO_DIR=E:\CS2 stuff\reev-cs2"
+set "REPO=E:\CS2 stuff\reev-cs2"
 set "DLL_SRC=E:\CS2 stuff\Reev Main\build\x64\Release\protected\reev_release.dll"
 set "LOADER_SRC=E:\CS2 stuff\Reev Main\src\ReevLoader\build\x64\Release\ReevLoader.exe"
+set "HASH_SRC=E:\CS2 stuff\Reev Main\src\ReevLoader\build\x64\Release\build_hash.txt"
 
 cls
 echo ========================================
 echo          Reev GitHub Uploader
 echo ========================================
-echo.
-echo   What do you want to upload?
 echo.
 echo   [1] reev_release.dll  (cheat DLL)
 echo   [2] ReevLoader.exe    (loader)
@@ -22,70 +21,66 @@ set /p CHOICE="Choice: "
 if /i "%CHOICE%"=="1" goto upload_dll
 if /i "%CHOICE%"=="2" goto upload_loader
 if /i "%CHOICE%"=="3" goto upload_both
-goto end
+goto done
 
 :upload_dll
-call :push_file "%DLL_SRC%" "reev_release.dll" "Update reev_release.dll"
-goto end
+call :push "reev_release.dll" "%DLL_SRC%"
+goto done
 
 :upload_loader
-call :push_file "%LOADER_SRC%" "ReevLoader.exe" "Update ReevLoader.exe"
-goto end
+call :push "ReevLoader.exe" "%LOADER_SRC%"
+call :push_hash
+goto done
 
 :upload_both
-call :push_file "%DLL_SRC%" "reev_release.dll" "Update reev_release.dll"
-call :push_file "%LOADER_SRC%" "ReevLoader.exe" "Update ReevLoader.exe"
-goto end
+call :push "reev_release.dll" "%DLL_SRC%"
+call :push "ReevLoader.exe" "%LOADER_SRC%"
+call :push_hash
+goto done
 
-:push_file
-set "SRC=%~1"
-set "NAME=%~2"
-set "MSG=%~3"
-
-echo.
-echo Have you already rebuilt/replaced %NAME% with the new version?
-echo Source: %SRC%
-echo.
-echo   [Y] Yes, it's ready
-echo   [N] No, cancel
-echo.
-set /p CONFIRM="Choice: "
-if /i not "%CONFIRM%"=="Y" (
-    echo Cancelled.
-    exit /b
-)
-
-if not exist "%SRC%" (
-    echo ERROR: Source file not found: %SRC%
-    exit /b
-)
+:push
+set "NAME=%~1"
+set "SRC=%~2"
 
 echo.
-echo Copying %NAME% to repo...
-copy /y "%SRC%" "%REPO_DIR%\%NAME%" > nul
+echo Have you replaced %NAME% with the new build? [Y/N]
+set /p OK=">> "
+if /i not "%OK%"=="Y" ( echo Skipped. & exit /b )
 
-echo Syncing with remote...
-git -C "%REPO_DIR%" stash --include-untracked > nul 2>&1
-git -C "%REPO_DIR%" pull origin main --strategy-option=ours
-git -C "%REPO_DIR%" stash pop > nul 2>&1
+if not exist "%SRC%" ( echo ERROR: %SRC% not found! & exit /b )
 
-echo Staging %NAME%...
-git -C "%REPO_DIR%" add "%NAME%"
+echo Copying %NAME%...
+copy /y "%SRC%" "%REPO%\%NAME%" >nul
+
+echo Staging...
+git -C "%REPO%" add "%NAME%"
 
 echo Committing...
-git -C "%REPO_DIR%" commit -m "%MSG%"
+git -C "%REPO%" commit -m "Update %NAME%"
 
 echo Pushing...
-git -C "%REPO_DIR%" push origin main
+git -C "%REPO%" push origin main
 if errorlevel 1 (
-    echo Push failed - trying force push...
-    git -C "%REPO_DIR%" push origin main --force
+    echo Retrying with force push...
+    git -C "%REPO%" push origin main --force
 )
 
-echo.
-echo Done! %NAME% pushed.
+echo %NAME% done!
 exit /b
 
-:end
+:push_hash
+if exist "%HASH_SRC%" (
+    echo Updating build_hash.txt + loader-version-check.txt...
+    copy /y "%HASH_SRC%" "%REPO%\build_hash.txt" >nul
+    copy /y "%HASH_SRC%" "%REPO%\loader-version-check.txt" >nul
+    git -C "%REPO%" add build_hash.txt loader-version-check.txt
+    git -C "%REPO%" commit -m "Update build hash"
+    git -C "%REPO%" push origin main
+    if errorlevel 1 git -C "%REPO%" push origin main --force
+)
+exit /b
+
+:done
 echo.
+echo All done!
 pause
