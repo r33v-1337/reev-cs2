@@ -15,8 +15,9 @@ function Write-Header {
 
 function Sync-Repo {
     Write-Host ">> Syncing with remote..." -ForegroundColor Yellow
-    $pull = git -C $RepoDir pull origin main 2>&1
-    Write-Host $pull
+    git -C $RepoDir stash --include-untracked 2>&1 | Out-Null
+    git -C $RepoDir pull origin main --strategy-option=ours 2>&1 | ForEach-Object { Write-Host $_ }
+    git -C $RepoDir stash pop 2>&1 | Out-Null
 }
 
 function Push-File {
