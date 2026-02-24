@@ -1,0 +1,8 @@
+
+changelog: 13/02/2026 - 6:32 AM [GMT+01:00]
+
+Autowall Stability Fix (Crash + Reliability)
+Fixed autowall crash - removed the wall check that was causing random crashes during wallbangs.
+More reliable wallbang checks - autowall now follows the gameGÇÖs own penetration rules to decide if a wall can be shot through.
+Correct blocked-shot behavior - shots are still rejected when the wall is too thick or cannot be penetrated.
+Min damage is still active - triggerbot only fires wallbang shots when the estimated damage is above your configured minimum.
