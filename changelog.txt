@@ -1,9 +1,6 @@
+changelog: 26/02/2026 - 06:56 PM [GMT+00:00]
 
-changelog: 25/02/2026 - 08:42 PM [GMT+00:00]
-
-Triggerbot Aim Mode
-Magnet mode - silently corrects your aim toward the target when the triggerbot fires, so bullets land even if your crosshair is slightly off.
-Seed mode - compensates for weapon spread so your shots hit exactly where they should, removing the RNG from your bullets.
-
-Public Configs Now Load from GitHub Again
-Community configs are now pulled from GitHub instead of Google Drive - the config browser will always show the latest configs available, and new ones are picked up automatically when they're added to the repo.
+Stretched Resolution Fixes
+Menu Clicks & Hitboxes Aligned - fixed an issue where clicking on the menu felt offset or unresponsive when playing on stretched resolutions (like 1440x1080).
+ESP Lines Up Perfectly - visuals like boxes, names, and health bars now properly anchor to players on non-native resolutions instead of drawing off to the side.
+Smoother Menu Dragging - window movement and slider adjustments are now completely accurate to your mouse position across all aspect ratios.
