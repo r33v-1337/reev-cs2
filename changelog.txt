@@ -1,6 +1,4 @@
-changelog: 26/02/2026 - 06:56 PM [GMT+00:00]
-
-Stretched Resolution Fixes
-Menu Clicks & Hitboxes Aligned - fixed an issue where clicking on the menu felt offset or unresponsive when playing on stretched resolutions (like 1440x1080).
-ESP Lines Up Perfectly - visuals like boxes, names, and health bars now properly anchor to players on non-native resolutions instead of drawing off to the side.
-Smoother Menu Dragging - window movement and slider adjustments are now completely accurate to your mouse position across all aspect ratios.
+> **changelog:** 03/03/2026 - 08:26 AM [GMT+00:00]
+> 
+> ## Particle Crash Stability Fix
+> - **Fixed a major in-game crash** - resolved a crash that could happen during matches when weapon effects (like muzzle flash and smoke) were loading.
