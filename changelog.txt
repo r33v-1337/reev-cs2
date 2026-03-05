@@ -1,4 +1,5 @@
-> **changelog:** 03/03/2026 - 08:26 AM [GMT+00:00]
-> 
-> ## Particle Crash Stability Fix
-> - **Fixed a major in-game crash** - resolved a crash that could happen during matches when weapon effects (like muzzle flash and smoke) were loading.
+
+changelog: 03/05/2026 - 12:19 PM [GMT+00:00]
+
+Crash Stability Fix
+Fixed a major in-game crash - resolved a crash that could happen mid-match after playing few rounds
