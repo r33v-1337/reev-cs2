@@ -1,5 +1,16 @@
+03/06/2026 - 07:22 PM [GMT+00:00]
+CRITICAL FIX: client.dll and particles.dll Crashes
+I've fixed those annoying crashes that kept happening exactly when someone died. 
 
-changelog: 03/05/2026 - 12:19 PM [GMT+00:00]
+What was happening:
+The game was crashing randomly for some of you when enemies died, especially if you had "Kill Ghost Chams" turned on.
+Basically, the cheese was trying to force the game to draw the dead bodies twice to create that cool ghost effect.
+But the game engine didn't like how I was doing it, and it was getting confused trying to clean up the dead bodies' particles and animations, which caused the crashes.
 
-Crash Stability Fix
-Fixed a major in-game crash - resolved a crash that could happen mid-match after playing few rounds
+What I fixed:
+I completely removed the old method of forcing those ghost chams on dead bodies.
+Now, I just let the game handle dead bodies exactly how it's supposed to naturally.
+
+What this means for you:
+No more random game crashes or freezes when you kill someone!
+I had to temporarily remove the "Kill Ghost Chams" effect on dead bodies to ensure your game stays 100% stable during intense fights.
