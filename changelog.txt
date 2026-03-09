@@ -1,4 +1,5 @@
-changelog: 09/03/2026 - 10:23 PM [GMT+00:00]
 
-Legitbot Silent Aim Per-Weapon Settings
-Silent Aim is now configurable per weapon category - you can now set it separately for pistols, rifles, SMGs, snipers, shotguns, and LMGs instead of using one shared setup for everything.
+changelog: 09/03/2026 - 11:11 PM [GMT+00:00]
+
+Triggerbot Keybind Display Fix
+Fixed the Triggerbot mode showing the wrong label - the keybind list now correctly shows Toggle, Hold, or Always based on your actual Triggerbot activation setting.
