@@ -1,5 +1,5 @@
 
-changelog: 09/03/2026 - 11:11 PM [GMT+00:00]
+changelog: 13/03/2026 - 11:42 AM [GMT+00:00]
 
-Triggerbot Keybind Display Fix
-Fixed the Triggerbot mode showing the wrong label - the keybind list now correctly shows Toggle, Hold, or Always based on your actual Triggerbot activation setting.
+C4 Plant Stutter Fix
+Fixed the huge stutter when planting C4 with C4 ESP enabled - planting the bomb no longer causes the big freeze / frame spike that some users were getting.
