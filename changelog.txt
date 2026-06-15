@@ -1,5 +1,0 @@
-
-changelog: 13/03/2026 - 11:42 AM [GMT+00:00]
-
-C4 Plant Stutter Fix
-Fixed the huge stutter when planting C4 with C4 ESP enabled - planting the bomb no longer causes the big freeze / frame spike that some users were getting.
